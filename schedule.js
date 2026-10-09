@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!currentUser?.loggedIn) return;
 
   const today = new Date();
-  const iso = d => d.toISOString().slice(0,10);
+  const iso = d => { const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0"); return `${y}-${m}-${day}`; };
   document.getElementById("date").value = iso(today);
   document.getElementById("searchFrom").value = iso(today);
   const week = new Date(today); week.setDate(week.getDate()+14);
